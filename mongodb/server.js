@@ -19,7 +19,7 @@ server.listen(3000, function() {
 });
 
 server.post('/login', function(req, res, next) {
-    var login = req.param;
+    var login = req.params;
     console.log('print: %s', JSON.stringify(login));
     db.users.find({ email: login.email }, function(err, data) {
             if (err) {
@@ -31,18 +31,18 @@ server.post('/login', function(req, res, next) {
 });
 
 server.post('/signUp', function(req, res, next) {
-    var signupdata = req.body;
+    var signupdata = req.params;
 
-    console.log('print1: %s', JSON.stringify(req));
+    console.log('print: %s', JSON.stringify(signupdata));
     db.users.save(signupdata, function(err, data, next) {
         if (err) {
             return res.send(500, err);
         }
-        es.writeHead(200, {
+        res.writeHead(200, {
             'Content-Type': 'application/json; charset=utf-8'
         });
         res.end(JSON.stringify(data));
-    })
+    });
     return next();
 });
 

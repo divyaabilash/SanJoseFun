@@ -51,7 +51,7 @@ angular.module('app.controllers', [])
                     mobile: $scope.mobile
                 }
                 httpService.signUp($scope.signupdata).then(function() {
-                    console.log("suucess");
+                    console.log("sucess");
                     $state.go('menu.viewEvents');
                 })
             }
