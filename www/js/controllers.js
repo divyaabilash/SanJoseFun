@@ -15,17 +15,18 @@ angular.module('app.controllers', [])
                 }
                 httpService.login($scope.data).then(function(res) {
                     console.log(res);
-                    if (res === null) {
+                    if (res.length === 0) {
                         alert("Looks like you have not signup!");
+                        $state.go('signup');
                     } else {
-                       if(res.password === password){
-                        $state.go('menu.viewEvents');
-                    }else{
-                        var conf=confirm("looks like you forgot password! want help?");
-                        if(conf){
-                            alert("Your password is:"+res.password);
+                        if (res[0].password === password) {
+                            $state.go('menu.viewEvents');
+                        } else {
+                            var conf = confirm("looks like you forgot password! want help?");
+                            if (conf) {
+                                alert("Your password is:" + res[0].password);
+                            }
                         }
-                    }
                     }
                 })
             } else {
