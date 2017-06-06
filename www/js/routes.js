@@ -75,11 +75,11 @@ angular.module('app.routes', [])
         }
     })
 
-    .state('map', {
-        url: '/map',
-        templateUrl: 'templates/map.html',
-        controller: 'mapCtrl'
-    })
+    // .state('map', {
+    //     url: '/map',
+    //     templateUrl: 'templates/map.html',
+    //     controller: 'mapCtrl'
+    // })
 
     .state('menu.eventDetails', {
         url: '/eventDetails',
@@ -95,18 +95,29 @@ angular.module('app.routes', [])
     })
 
     .state('menu.categoryEvents', {
-        url: '/categoryEvents',
-        params: {
-            category: ""
-        },
-        views: {
-            'side-menu21': {
-                templateUrl: 'templates/categoryEvents.html',
-                controller: 'categoryEventsCtrl'
+            url: '/categoryEvents',
+            params: {
+                category: ""
+            },
+            views: {
+                'side-menu21': {
+                    templateUrl: 'templates/categoryEvents.html',
+                    controller: 'categoryEventsCtrl'
+                }
             }
-        }
-    })
-
+        })
+        .state('menu.map', {
+            url: '/map',
+            params: {
+                category: ""
+            },
+            views: {
+                'side-menu21': {
+                    templateUrl: 'templates/map.html',
+                    controller: 'mapCtrl'
+                }
+            }
+        })
     $urlRouterProvider.otherwise('/login')
 
 
